@@ -1,0 +1,510 @@
+class Point {
+
+    private int x;
+    private int y;
+
+
+    public Point() {
+        this.x = 320;
+        this.y = 200;
+    }
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int number) {
+        this.x = number;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int number) {
+
+        this.y = number;
+    }
+
+    public Point getCoordinates() {
+
+        return new Point(this.x, this.y);
+    }
+
+    public void setCoordinates(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setCoordinates(Point punkt) {
+        this.x = punkt.getX();
+        this.y = punkt.getY();
+    }
+
+    public double distance(Point X) {
+
+        double x, y, dlugosc;
+
+        x = X.getX();
+        y = X.getY();
+
+        dlugosc = Math.sqrt(((x - this.x) * (x - this.x)) + ((y - this.y) * (y - this.y)));
+
+        return dlugosc;
+    }
+}
+//--------------------------------------------------------------------------------------------------------------------------------------
+public class Segment {
+
+    private Point X;
+    private Point Y;
+
+    public Segment(Point X,Point Y) {
+        this.X = X;
+        this.Y = Y;
+    }
+
+    public String toString() {
+
+      System.out.println("Segment[v1=("+ X.getX()+","+X.getY()+"),v2=("+Y.getX()+","+Y.getY()+")");
+
+        return null;
+    }
+    public double getLength(){
+
+        return Math.sqrt((X.getX()- Y.getX())*(X.getX()-Y.getX()))+((X.getY()-Y.getY())*(X.getY()-Y.getY()));
+    }
+    public static void main (String[] args){
+        Point A = new Point(1,2);
+        Point B = new Point(3,1);
+        Segment ST = new Segment(A,B);
+
+        ST.toString();
+        System.out.println(ST.getLength());
+
+    }
+}
+//--------------------------------------------------------------------------------------------------------------------------------
+public class Triangle {
+
+    private Point X;
+    private Point Y;
+    private Point Z;
+
+    public Triangle(Point X, Point Y, Point Z) {
+
+        this.X=X;
+        this.Y=Y;
+        this.Z=Z;
+
+    }
+
+    public String toString(){
+
+        System.out.println("Triangle[v1=("+X.getX()+","+X.getY()+",v2=("+Y.getX()+","+Y.getY()+",v3=("+Z.getX()+","+Z.getY()+")");
+
+        return null;
+    }
+
+    public double getDistances(){
+
+        double XY,YZ,ZX ,obwod;
+
+        XY=Math.sqrt((X.getX()-Y.getX())*(X.getX()-Y.getX())+(Y.getX()-Y.getY())*(Y.getX()-Y.getY()));
+        YZ=Math.sqrt((Y.getX()-Y.getY())*(Y.getX()-Y.getY())+(Z.getX()-Z.getY())*(Z.getX()-Z.getY()));
+        ZX=Math.sqrt((Z.getX()-Z.getY())*(Z.getX()-Z.getY())+(X.getX()-X.getY())*(X.getX()-X.getY()));
+        obwod=(XY+YZ+ZX);
+
+        return (obwod);
+    }
+
+    public String getType(){
+
+        double XY,YZ,ZX;
+
+        XY=Math.sqrt((X.getX()-Y.getX())*(X.getX()-Y.getX())+(Y.getX()-Y.getY())*(Y.getX()-Y.getY()));
+        YZ=Math.sqrt((Y.getX()-Y.getY())*(Y.getX()-Y.getY())+(Z.getX()-Z.getY())*(Z.getX()-Z.getY()));
+        ZX=Math.sqrt((Z.getX()-Z.getY())*(Z.getX()-Z.getY())+(X.getX()-X.getY())*(X.getX()-X.getY()));
+
+        if(XY==YZ && YZ==ZX) return "Trójkąt Równoboczny";
+        else if (XY==YZ || YZ==ZX || ZX ==XY) return "Trójkąt Równoramienny";
+        else return "Trójkąt Różnoboczny";
+
+    }
+
+    public static void main (String[] args) {
+
+        Point A = new Point(0,0);
+        Point B = new Point(3,4);
+        Point C = new Point(-3,-4);
+        Triangle TR = new Triangle(A,B,C);
+
+        TR.toString();
+        System.out.printf("%.1f",TR.getDistances());
+        System.out.println("\n" + TR.getType());
+
+    }
+}
+//-------------------------------------------------------------------------------------------------------
+public class Card{
+
+    public enum WartośćKarty{
+        dwa,trzy,cztery,pięć,sześć,siedem,osiem,dziewięć,dziesięć,walet,dama,król,as,jocker;
+    }
+
+    public enum KolorKarty{
+        karo,kier,trefl,pik;
+    }
+
+    private WartośćKarty wartość;
+    private KolorKarty kolor;
+
+    public Card(WartośćKarty x,KolorKarty y){
+
+        this.wartość = x;
+        this.kolor = y;
+    }
+
+    public void main(String[] args){
+
+     Card pierwsza = new Card(WartośćKarty.as,KolorKarty.kier);
+     Card druga = new Card(WartośćKarty.król,KolorKarty.pik);
+     Card trzecia = new Card(WartośćKarty.dwa,KolorKarty.karo);
+    }
+}
+//-------------------------------------------------------------------------------------------
+public class Student {
+    private String imie ="Unknow";
+    private String nazwisko ="Unknow";
+    private String nrindexu;
+    private int obecność;
+    private int ocena;
+
+    public String getImie() {
+        return imie;
+    }
+
+    public String getNrindexu() {
+        return nrindexu;
+    }
+
+    public void setNrindexu(String nrindexu) {
+        this.nrindexu = nrindexu;
+    }
+
+    public int getObecność() {
+        return obecność;
+    }
+
+    public void setObecność(int obecność) {
+
+       if(obecność > 100){
+            obecność=100;
+        }
+        else if (obecność < 0){
+            obecność =0;
+        }
+
+        this.obecność = obecność;
+    }
+
+    public int getOcena() {
+        return ocena;
+    }
+
+    public void setOcena(int ocena) {
+
+        if(obecność < 50){
+            ocena = 2;
+        }
+        this.ocena = ocena;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public static void main (String[] args){
+
+        Student Damian = new Student();
+        Damian.setImie("Damian");
+        Damian.setNazwisko("Leszczyński");
+        Damian.setNrindexu("s25661");
+        Damian.setObecność(35);
+        Damian.setOcena(4);
+
+        System.out.println(Damian.getImie());
+        System.out.println(Damian.getNazwisko());
+        System.out.println(Damian.getNrindexu());
+        System.out.println(Damian.getObecność());
+        System.out.println(Damian.getOcena());
+    }
+}
+//----------------------------------------------------------------------------------
+public class MyDate {
+    private int day;
+    private int month;
+    private int year;
+
+    public MyDate(int d, int m, int y)
+    {
+        int luty = 28;
+        int ile;
+        if(y%4==0){
+            luty = 29;
+        }
+
+        if(y<1990){
+            y = 1991;
+        }
+        else if(y>2050){
+            y = 2050;
+        }
+
+        switch(m)
+        {
+            case 1:
+            case 2:
+                ile = luty; break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+                ile = 30;break;
+            case 12:
+                ile = 31; break;
+            default: m = 1; ile = 31; break;
+        }
+
+        if(d<=0) d = 1;
+        else if(d>ile) d = ile;
+
+        this.day = d;
+        this.month = m;
+        this.year = y;
+    }
+
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void displayDate()
+    {
+        String dzien;
+        String miesiac;
+        if(getDay()<10) {
+            dzien = "0" + String.valueOf(getDay());
+        }
+        else{
+            dzien = String.valueOf(getDay());
+        }
+
+        if(getMonth()<10) {
+            miesiac = "0" + String.valueOf(getMonth());
+        }
+        else{
+            miesiac = String.valueOf(getMonth());
+        }
+
+        System.out.println(dzien + "/" + miesiac + "/" + getYear());
+    }
+
+    public static void main(String[] args)
+    {
+        MyDate data = new MyDate(23,2,2020);
+        data.displayDate();
+
+    }
+}
+//---------------------------------------------------------------------------------------------------
+public class Numbers {
+    private int a;
+    private int b;
+    private int c;
+
+    public Numbers(int a,int b,int c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public int getC() {
+        return c;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public int sum(){
+
+        return (getA()+getB()+getC());
+    }
+
+    public double average(){
+
+        return (getA()+getB()+getC()/3);
+    }
+
+    public int min(){
+
+        int min;
+        min = getA();
+        if(getB()<min){
+            min = getB();
+        }
+        else if(getC()<min){
+            min = getC();
+        }
+        return min;
+
+    }
+
+    public int max(){
+        int max;
+        max = getA();
+        if(getB()>max){
+            max=getB();
+        }
+        else if(getC()>max){
+            max = getC();
+        }
+        return max;
+    }
+
+    public double geometric(){
+        return Math.pow(getA()*getB()*getC(),0.3333333333333333);
+    }
+
+    public static void main (String[] args){
+
+        Numbers liczby = new Numbers(14,15,16);
+        System.out.println(liczby.sum());
+        System.out.println(liczby.average());
+        System.out.println(liczby.min());
+        System.out.println(liczby.max());
+        System.out.println(liczby.geometric());
+    }
+}
+//--------------------------------------------------------------------------------------
+public class Invoice {
+
+    private String product_number;
+    private String product_description;
+    private int quantity;
+    private double pricePerItem;
+
+    public Invoice(String product_number, String product_description,int quantity,double pricePerItem) {
+        this.product_number = product_number;
+        this.product_description = product_description;
+        this.quantity = quantity;
+        this.pricePerItem = pricePerItem;
+    }
+
+    public String getProduct_number() {
+        return product_number;
+    }
+
+    public void setProduct_number(String product_number) {
+        this.product_number = product_number;
+    }
+
+    public String getProduct_description() {
+        return product_description;
+    }
+
+    public void setProduct_description(String product_description) {
+        this.product_description = product_description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPricePerItem() {
+        return pricePerItem;
+    }
+
+    public void setPricePerItem(double pricePerItem) {
+        this.pricePerItem = pricePerItem;
+    }
+    public double amount()
+    {
+        if(getQuantity()<0 || getPricePerItem()<0){
+            return 0;
+        }
+        else{
+            return (getQuantity()*getPricePerItem());
+        }
+    }
+
+    public static void main(String[] args){
+
+        Invoice produkt1 = new Invoice("2137", "Notatka", 28, 25);
+        Invoice produkt2 = new Invoice("2115", "Coś tu powinno być", -10, 22);
+
+        System.out.println(produkt1.amount());
+        System.out.println(produkt2.amount());
+
+    }
+}
+
